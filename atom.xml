@@ -4,7 +4,7 @@
   <title><![CDATA[For the Love of Code]]></title>
   <link href="http://hpetrow.github.io/atom.xml" rel="self"/>
   <link href="http://hpetrow.github.io/"/>
-  <updated>2015-06-14T16:11:09-04:00</updated>
+  <updated>2015-06-16T08:20:51-04:00</updated>
   <id>http://hpetrow.github.io/</id>
   <author>
     <name><![CDATA[Heather Petrow]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Am I Just an Instance?]]></title>
+    <link href="http://hpetrow.github.io/blog/2015/06/16/am-i-just-an-instance/"/>
+    <updated>2015-06-16T07:41:32-04:00</updated>
+    <id>http://hpetrow.github.io/blog/2015/06/16/am-i-just-an-instance</id>
+    <content type="html"><![CDATA[<p>Object-oriented programming is an elegant design pattern due to its fundamental
+abstraction of logic, and the ability to encapsulate data storage and transfer
+in an organized system of properties and behavior. The oo model is so beautiful
+and logical because it is dependant on relationships and communication, which
+mirrors some of the most powerful and efficient systems in nature, from ant
+colonies to neural networks. Classes can share the same data in the form of
+class methods and class variables, but instances may have unique values and
+behavior through instance methods and variables. Ie. We are all humans,
+@@alive = true, trying to make sense of @@life_the_universe_and_everything = 42,
+but are also different and unique individuals, with different @characteristics
+and @experiences.</p>
+
+<p>In particular, object-oriented programming in Ruby is empowering and liberating,
+because of the lack of authoritarian restriction sometimes present in other
+languages. As a person who is loosely devout to categorization and right angles,
+oop in Ruby can seem at first like the wild west of coding. Coming from some
+Java experience, which tends to be strongly typed, Ruby seems at first like an
+irresponsible caretaker, letting variables hang around with whomever they
+choose. However, it is this freedom that enables dynamic assignment and
+interaction. The programmer is liberated from fussing over types and
+typecasting, focusing rather upon functionality and logical relationships. Ruby
+trusts the human, because it was written for the human, and doesn&rsquo;t impose
+stringent rules to chastise at every incompatible type.</p>
+
+<p>Like many others here at Flatiron, there was a time when programming was the
+last thing I would have imagined myself doing. Coding always seemed like a
+mysterious realm where pedantic geniuses were permanantly hunched over machines,
+typing endless lines of crytic mathematical prescience. It was such an internal
+upheaval to discover this love for coding that it is still sometimes difficult
+to believe. Yet I need only to call upon self.loves_to_code #=> true, to verify
+its validity. Now, I can hardly imagine my life without code. I suppose fate is
+a clever (rubyist) programmer.</p>
+
+<p>It occurs to me that learning to let ourselves love something new, such as
+coding, may be more difficult the more strongly we type our properties. We may
+resist assigning our attributes to unknown types, because we have defined
+ourselves and our variables so strictly. My Java self would have triggered an
+onslaught of compile-time errors at any attempt to assign this type of
+Programmer. Conversely, my Ruby self allows me to embrace new ideas and
+experiences, and yet, still remain the same self. I have come to deeply
+appreciate the Ruby language, because it allows me to focus on expression and
+meaning, to view the self as a whole, rather than belaboring the mechanics of
+every thought and decision.</p>
+
+<p>So, if, in moments of existential crisis, I can hardly recognize this version of
+self, with instance variables so different from the self that existed not so
+very long ago, perhaps there is some solace in believing that perhaps I am
+merely an instance with a particular object identity, taking up some
+insignificant, temporal space in memory. My properties may have changed, but my
+identity has not. In moments of doubt, I&rsquo;ll call upon my methods.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My First Post on Octopress]]></title>
