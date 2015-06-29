@@ -4,7 +4,7 @@
   <title><![CDATA[For the Love of Code]]></title>
   <link href="http://hpetrow.github.io/atom.xml" rel="self"/>
   <link href="http://hpetrow.github.io/"/>
-  <updated>2015-06-16T08:20:51-04:00</updated>
+  <updated>2015-06-29T09:14:08-04:00</updated>
   <id>http://hpetrow.github.io/</id>
   <author>
     <name><![CDATA[Heather Petrow]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Professor Butts RacksUp and Talks Middleware]]></title>
+    <link href="http://hpetrow.github.io/blog/2015/06/29/professor-butts-racksup-and-talks-middleware/"/>
+    <updated>2015-06-29T07:27:59-04:00</updated>
+    <id>http://hpetrow.github.io/blog/2015/06/29/professor-butts-racksup-and-talks-middleware</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://hpetrow.github.io/images/prof_butts.gif" width="350" height="350" title="image" alt="images">
+<br>
+use SpoonToMouth<br>
+use JerkLadle<br>
+use ThrowCrackerPastParrot<br>
+use ParrotJumps<br>
+use PerchTilts<br>
+use SeedsInPail<br>
+use PullCord<br>
+use IgniteRocket<br>
+use SickleCutsString<br>
+use PendumlumSwings<br>
+use NapkinSwings<br>
+run ProfessorButtsAndTheSelfOperatingNapkin<br></p>
+
+<p>class ProfessorButtsAndTheSelfOperatingNapkin<br>
+&nbsp;&nbsp;def call(env)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[200, {&ldquo;Content-Type&rdquo; => &ldquo;text/plain&rdquo;}, [&ldquo;SelfOperatingNapkin&rdquo;]]<br>
+&nbsp;&nbsp;end<br>
+end<br></p>
+
+<p><strong>Professor Butts RacksUp and Talks Middleware</strong><br>
+<br>
+While futzing around with a recent Rack lab, I found myself feeling like I was trying to operate a manual transmission without understanding how the engine works. So, this is an attempt to bring some clarity to my understanding of Rack and how it is integrated into http facing applications.<br>
+<br>
+<em>Professor Butts, I don&rsquo;t get it. What is Rack?</em><br>
+<br>
+Rack is a middleware program that serves as an intermediary between web servers and web applications. It is an interface that provides a level of abstraction over some of the different stages of request/response handling, such as authentication, authorization, caching, and execution. At a basic level, it wraps the HTTP requests/responses into a streamlined protocol, so that the logic of application functionality doesn&rsquo;t have to mix concerns with the whole business of communication between server-application.
+<br><br>
+At the core of its functionality, Rack applications must simply respond to a call method that takes an evironment hash as an argument. This env arg contains data pertaining to the incoming request, such as REQUEST_METHOD; PATH_INFO, SERVER_PORT, and HTTP_VARIABLES, sort of like &hellip;the postage of on a letter? The purpose of env seemed mysterious at first, but it is really just a hash with CGI-type variables that must conform to the rack standard environment spec. Then, the outgoing response is forumulated as an array containing three items: a status, headers, and a body that must respond to an &lsquo;each&rsquo; method.
+<br><br>
+<em>Why middleware?</em>
+<br><br>
+A particularly powerful aspect of Rack lies in its use middlware. Middlware just refers to software that is&hellip; in the middle. It acts as the connection layer between interacting applications. And Rack is itself also a type of middleware - middleware upon middleware. The middleware in Rack are just Ruby classes that have an initialize method taking an application as an argument and also have a call method. They simply act as filters around the request to the application and modifiers to the response. The Rack architecture utilizes the middleware modules by building them into a stack to chain the processes in a pipeline design pattern. By separating concerns into this logical chain of modules, it distills all the steps of the task down into one simple method call.
+<br><br>
+class IgniteRocket<br>
+&nbsp;&nbsp;def initialize(app)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;@app = app<br>
+&nbsp;&nbsp;end<br></p>
+
+<p>&nbsp;&nbsp;def call(env)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;status, headers, response  = @app.call(env)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rocket_launched = &ldquo; &amp;$%#*** >==> &rdquo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[status, headers, response.last + rocket_launched]<br>
+&nbsp;&nbsp;end<br>
+end<br>
+<br><br>
+class SickleCutsString<br>
+&nbsp;&nbsp;def initialize(app)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;@app = app<br>
+&nbsp;&nbsp;end<br></p>
+
+<p>&nbsp;&nbsp;def call(env)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;status, headers, response  = @app.call(env)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sickle = &ldquo; &ndash;(/&ndash; &rdquo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[status, headers, response.last + sickle]<br>
+&nbsp;&nbsp;end<br>
+end<br>
+<br><br>
+<em>Pipline Processing?</em><br>
+<br>
+I think Rack&rsquo;s pipeline processing design may be most simply imagined as a series of sequential tasks, with the output of each stage being passed down the line. Pipeline design reminds me of a Rube Goldberg machine, with lots of little processes happening in succession. Computations are passed along the stack like a conveyer belt to configure the response. This process chain provides an organized, modular way to sift and separate the various concerns of transfer protocol, making the handling more simple and streamlined. So, without a lot of fuss, Rack gives me to power and flexibility to initiate a request with a lift of my spoon, &hellip;throw a cracker, feed a parrot, fill a pail, launch a tiny rocket into space, &hellip;and respond with a napkin in my face.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Am I Just an Instance?]]></title>
