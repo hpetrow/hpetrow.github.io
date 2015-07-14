@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>For the Love of Code</title>
+  <title>Me and My Arel - For the Love of Code</title>
   <meta name="author" content="Heather Petrow">
 
   
@@ -19,7 +19,7 @@ According to the documentation, Arel is a SQL AST &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hpetrow.github.io/">
+  <link rel="canonical" href="http://hpetrow.github.io/blog/2015/07/14/me-and-my-arel/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="For the Love of Code" type="application/atom+xml">
@@ -64,15 +64,12 @@ According to the documentation, Arel is a SQL AST &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/07/14/me-and-my-arel/">Me and My Arel</a></h1>
+      <h1 class="entry-title">Me and My Arel</h1>
     
     
       <p class="meta">
@@ -88,7 +85,7 @@ According to the documentation, Arel is a SQL AST &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>
+<div class="entry-content"><p>
 Beneath the fantastical query interface of Active Record is a trusty little helper named Arel.
 According to the documentation, Arel is a SQL AST manager for Ruby. It<br>
 <ol>
@@ -197,215 +194,52 @@ Then, we can convert the dot file to a png, and...
 
 <hr />
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/06/29/professor-butts-racksup-and-talks-middleware/">Professor Butts RacksUp and Talks Middleware</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-29T07:27:59-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:27 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img class="center" src="/images/prof_butts.gif" width="350" height="350" title="image" alt="images">
-<br>
-use SpoonToMouth<br>
-use JerkLadle<br>
-use ThrowCrackerPastParrot<br>
-use ParrotJumps<br>
-use PerchTilts<br>
-use SeedsInPail<br>
-use PullCord<br>
-use IgniteRocket<br>
-use SickleCutsString<br>
-use PendumlumSwings<br>
-use NapkinSwings<br>
-run ProfessorButtsAndTheSelfOperatingNapkin<br></p>
-
-<p>class ProfessorButtsAndTheSelfOperatingNapkin<br>
-&nbsp;&nbsp;def call(env)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[200, {&ldquo;Content-Type&rdquo; => &ldquo;text/plain&rdquo;}, [&ldquo;SelfOperatingNapkin&rdquo;]]<br>
-&nbsp;&nbsp;end<br>
-end<br></p>
-
-<p><strong>Professor Butts RacksUp and Talks Middleware</strong><br>
-<br>
-While futzing around with a recent Rack lab, I found myself feeling like I was trying to operate a manual transmission without understanding how the engine works. So, this is an attempt to bring some clarity to my understanding of Rack and how it is integrated into http facing applications.<br>
-<br>
-<em>Professor Butts, I don&rsquo;t get it. What is Rack?</em><br>
-<br>
-Rack is a middleware program that serves as an intermediary between web servers and web applications. It is an interface that provides a level of abstraction over some of the different stages of request/response handling, such as authentication, authorization, caching, and execution. At a basic level, it wraps the HTTP requests/responses into a streamlined protocol, so that the logic of application functionality doesn&rsquo;t have to mix concerns with the whole business of communication between server-application.
-<br><br>
-At the core of its functionality, Rack applications must simply respond to a call method that takes an evironment hash as an argument. This env arg contains data pertaining to the incoming request, such as REQUEST_METHOD; PATH_INFO, SERVER_PORT, and HTTP_VARIABLES, sort of like &hellip;the postage of on a letter? The purpose of env seemed mysterious at first, but it is really just a hash with CGI-type variables that must conform to the rack standard environment spec. Then, the outgoing response is forumulated as an array containing three items: a status, headers, and a body that must respond to an &lsquo;each&rsquo; method.
-<br><br>
-<em>Why middleware?</em>
-<br><br>
-A particularly powerful aspect of Rack lies in its use middlware. Middlware just refers to software that is&hellip; in the middle. It acts as the connection layer between interacting applications. And Rack is itself also a type of middleware - middleware upon middleware. The middleware in Rack are just Ruby classes that have an initialize method taking an application as an argument and also have a call method. They simply act as filters around the request to the application and modifiers to the response. The Rack architecture utilizes the middleware modules by building them into a stack to chain the processes in a pipeline design pattern. By separating concerns into this logical chain of modules, it distills all the steps of the task down into one simple method call.
-<br><br>
-class IgniteRocket<br>
-&nbsp;&nbsp;def initialize(app)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;@app = app<br>
-&nbsp;&nbsp;end<br></p>
-
-<p>&nbsp;&nbsp;def call(env)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;status, headers, response  = @app.call(env)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;rocket_launched = &ldquo; &amp;$%#*** >==> &rdquo;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[status, headers, response.last + rocket_launched]<br>
-&nbsp;&nbsp;end<br>
-end<br>
-<br><br>
-class SickleCutsString<br>
-&nbsp;&nbsp;def initialize(app)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;@app = app<br>
-&nbsp;&nbsp;end<br></p>
-
-<p>&nbsp;&nbsp;def call(env)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;status, headers, response  = @app.call(env)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;sickle = &ldquo; &ndash;(/&ndash; &rdquo;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[status, headers, response.last + sickle]<br>
-&nbsp;&nbsp;end<br>
-end<br>
-<br><br>
-<em>Pipline Processing?</em><br>
-<br>
-I think Rack&rsquo;s pipeline processing design may be most simply imagined as a series of sequential tasks, with the output of each stage being passed down the line. Pipeline design reminds me of a Rube Goldberg machine, with lots of little processes happening in succession. Computations are passed along the stack like a conveyer belt to configure the response. This process chain provides an organized, modular way to sift and separate the various concerns of transfer protocol, making the handling more simple and streamlined. So, without a lot of fuss, Rack gives me to power and flexibility to initiate a request with a lift of my spoon, &hellip;throw a cracker, feed a parrot, fill a pail, launch a tiny rocket into space, &hellip;and respond with a napkin in my face.</p>
-</div>
-  
   
 
+<span class="byline author vcard">Posted by <span class="fn">Heather Petrow</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/06/16/am-i-just-an-instance/">Am I Just an Instance?</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
 
-<time class='entry-date' datetime='2015-06-16T07:41:32-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:41 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Object-oriented programming is an elegant design pattern due to its fundamental
-abstraction of logic, and the ability to encapsulate data storage and transfer
-in an organized system of properties and behavior. The oo model is so beautiful
-and logical because it is dependant on relationships and communication, which
-mirrors some of the most powerful and efficient systems in nature, from ant
-colonies to neural networks. Classes can share the same data in the form of
-class methods and class variables, but instances may have unique values and
-behavior through instance methods and variables. Ie. We are all humans,
-@@alive = true, trying to make sense of @@life_the_universe_and_everything = 42,
-but are also different and unique individuals, with different @characteristics
-and @experiences.</p>
-
-<p>In particular, object-oriented programming in Ruby is empowering and liberating,
-because of the lack of authoritarian restriction sometimes present in other
-languages. As a person who is loosely devout to categorization and right angles,
-oop in Ruby can seem at first like the wild west of coding. Coming from some
-Java experience, which tends to be strongly typed, Ruby seems at first like an
-irresponsible caretaker, letting variables hang around with whomever they
-choose. However, it is this freedom that enables dynamic assignment and
-interaction. The programmer is liberated from fussing over types and
-typecasting, focusing rather upon functionality and logical relationships. Ruby
-trusts the human, because it was written for the human, and doesn&rsquo;t impose
-stringent rules to chastise at every incompatible type.</p>
-
-<p>Like many others here at Flatiron, there was a time when programming was the
-last thing I would have imagined myself doing. Coding always seemed like a
-mysterious realm where pedantic geniuses were permanantly hunched over machines,
-typing endless lines of crytic mathematical prescience. It was such an internal
-upheaval to discover this love for coding that it is still sometimes difficult
-to believe. Yet I need only to call upon self.loves_to_code #=> true, to verify
-its validity. Now, I can hardly imagine my life without code. I suppose fate is
-a clever (rubyist) programmer.</p>
-
-<p>It occurs to me that learning to let ourselves love something new, such as
-coding, may be more difficult the more strongly we type our properties. We may
-resist assigning our attributes to unknown types, because we have defined
-ourselves and our variables so strictly. My Java self would have triggered an
-onslaught of compile-time errors at any attempt to assign this type of
-Programmer. Conversely, my Ruby self allows me to embrace new ideas and
-experiences, and yet, still remain the same self. I have come to deeply
-appreciate the Ruby language, because it allows me to focus on expression and
-meaning, to view the self as a whole, rather than belaboring the mechanics of
-every thought and decision.</p>
-
-<p>So, if, in moments of existential crisis, I can hardly recognize this version of
-self, with instance variables so different from the self that existed not so
-very long ago, perhaps there is some solace in believing that perhaps I am
-merely an instance with a particular object identity, taking up some
-insignificant, temporal space in memory. My properties may have changed, but my
-identity has not. In moments of doubt, I&rsquo;ll call upon my methods.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time class='entry-date' datetime='2015-07-14T06:22:49-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:22 am</span></time>
       
-  <header>
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/flatiron-school/'>flatiron&nbsp;school</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2015/06/14/my-first-post-on-octopress/">My First Post on Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-14T16:05:56-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:05 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hello world.</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hpetrow.github.io/blog/2015/07/14/me-and-my-arel/" data-via="" data-counturl="http://hpetrow.github.io/blog/2015/07/14/me-and-my-arel/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/06/29/professor-butts-racksup-and-talks-middleware/" title="Previous Post: Professor Butts RacksUp and Talks Middleware">&laquo; Professor Butts RacksUp and Talks Middleware</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -437,6 +271,7 @@ identity has not. In moments of doubt, I&rsquo;ll call upon my methods.</p>
 
   
 </aside>
+
 
     </div>
   </div>

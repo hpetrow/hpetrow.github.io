@@ -1,0 +1,29 @@
+digraph "Arel" {
+node [width=0.375,height=0.25,shape=record];
+70361536578760 [label="<f0>Arel::Nodes::SelectStatement"];
+70361536565100 [label="<f0>Array"];
+70361536578720 [label="<f0>Arel::Nodes::SelectCore"];
+70361536578440 [label="<f0>Arel::Nodes::JoinSource"];
+70361536759120 [label="<f0>Arel::Table"];
+70361536759040 [label="<f0>String|<f1>boats"];
+70361536568520 [label="<f0>Array"];
+70361536567840 [label="<f0>Array"];
+70361536579300 [label="<f0>Arel::Nodes::SqlLiteral|<f1>*"];
+70361536567540 [label="<f0>Array"];
+70361536567100 [label="<f0>Array"];
+8 [label="<f0>NilClass|<f1>"];
+70361536564480 [label="<f0>Array"];
+70361536578760 -> 70361536565100 [label="cores"];
+70361536565100 -> 70361536578720 [label="0"];
+70361536578720 -> 70361536578440 [label="source"];
+70361536578440 -> 70361536759120 [label="left"];
+70361536759120 -> 70361536759040 [label="name"];
+70361536578440 -> 70361536568520 [label="right"];
+70361536578720 -> 70361536567840 [label="projections"];
+70361536567840 -> 70361536579300 [label="0"];
+70361536578720 -> 70361536567540 [label="wheres"];
+70361536578720 -> 70361536567100 [label="windows"];
+70361536578760 -> 8 [label="limit"];
+70361536578760 -> 70361536564480 [label="orders"];
+70361536578760 -> 8 [label="offset"];
+}

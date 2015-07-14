@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flatiron&nbsp;school | For the Love of Code]]></title>
   <link href="http://hpetrow.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://hpetrow.github.io/"/>
-  <updated>2015-06-29T09:14:08-04:00</updated>
+  <updated>2015-07-14T09:15:48-04:00</updated>
   <id>http://hpetrow.github.io/</id>
   <author>
     <name><![CDATA[Heather Petrow]]></name>
@@ -12,6 +12,122 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Me and My Arel]]></title>
+    <link href="http://hpetrow.github.io/blog/2015/07/14/me-and-my-arel/"/>
+    <updated>2015-07-14T06:22:49-04:00</updated>
+    <id>http://hpetrow.github.io/blog/2015/07/14/me-and-my-arel</id>
+    <content type="html"><![CDATA[<p>
+Beneath the fantastical query interface of Active Record is a trusty little helper named Arel.
+According to the documentation, Arel is a SQL AST manager for Ruby. It<br>
+<ol>
+  <li>Simplifies the generation of complex SQL queries</li>
+  <li>Adapts to various RDBMSes</li>
+</ol>
+</p>
+
+
+
+
+<p>
+So, what does this mean, and what does Arel do beneath the surface?
+</p>
+
+
+
+
+<h3>The Point! Arel is an object-oriented Ruby library for relational algebra</h3>
+
+
+<p>
+Relational algebra is a mathematical system, in which the operands are relations (or variables representing relations), and the operators are common procedures on these relations in a database. By definition as an algabraic system, operators and operands are combined to form expressions that produce new values. So, all of the things we want to do with our database, like selecting and getting attributes, are expressed as evaluations of relations and operations. The core relational algebra operations are: set operations (union, intersection, and difference); selection (picking rows); projection (picking columns); products/ joins, and renaming. So, for example, a selection query can be mathematically fornulated as R1:= &sigma;<sub>c</sub>(R2), where c is the condition to be satisfied with reference to attributes of R2.
+</p>
+
+
+
+
+<h3>The Not So Pointless Forest of Abstract Syntax Trees</h3>
+
+
+<p>
+Arel implements this relational algebra system by representing queries as nodes in a data structure called an abstract syntax tree (AST). An abstract syntax tree is just a graph which breaks the syntax down into abstract pieces and represents their syntactic relationships as paths. What is the point of all these nodes? Having queries represented as nodes is really powerful, because it makes queries composable and allows for creation or modification through method calls. So a query can be built up modularly through combinations of parts, as well as with other queries. Like interchangable blocks, the pieces can configured to form many different results.
+</p>
+
+
+<p>
+In the spirit of object-oriented design, this is a very Rubyist solution for managing unweildy queries, because responsibilities and logic can be separated into objects and comprehensive pieces with particular jobs and explicit names, that can be reused and chained together. Thus, complex queries become simplified into more managable parts with much more resiliance and variability. This flexibility is at the heart of Arel's functionality, but it additionally extends to the higher level ORM framework, like Active Record, which is built on top. And, so this is a really large force behind the magic of the Active Record query interface.
+</p>
+
+
+
+
+<p>
+In this transformative story, there are three big supporting characters: the manager, the visitor, and the collector.
+</p>
+
+
+
+
+<h3> The Pointed Man-ager </h3>
+
+
+<p>
+...because "A point in every direction is the same as no point at all."<br>
+Managers are objects responsible for creating and modifying the tree. For instance, The Select Manager is responsible for composing select statements. So, if we select all from a table, (table.project(Arel.star)), an instance of SelectManager is returned. Similarly, there are managers for insert, update, and delete. If we want to compose a select query, we can instantiate a manager instance (insert_manager = Arel::InsertManager.new(ActiveRecord::Base)), and tell the manager to create the query, (insert_manager.insert([[table[:attribute], "value"]])). When methods are called to modify the query, the manager goes in and updates the appropriate nodes of the tree. We can then call the to_sql method on the manager instance to have the resulting SQL statement returned.
+</p>
+
+
+
+
+<h3> The Leaf Visitors </h3>
+
+
+<p>
+Arel processes the output by using the extrinsic visitor pattern, which enables Arel to remain flexible and database agnostic. This also abstracts the output processing away from the tree, so that the structure doesn't need to change in order to produce different types of queries. There are a number of different types of visitors in the Visitor directory, but the big database workhorse is ToSql. Other visitors include, MySQL, PostgreSQL, and SQLite. And since the point of Arel is to generate SQL statements, all of the database visitors inherit from ToSql. With all of these visitors, Arel must be really smart about which visitor to use. It does this by having the visitor call an accept method on itself, with the root node as an argument. Then, it looks at the root node and determines which visit method to execute from the root node's type. So, the nodes don't need to concern themselves with results, as the leaves need not concern themselves with the harvest.
+</p>
+
+
+
+
+<h3> The Rock - Collector </h3>
+
+
+<p>
+Then, bringing it all together, is the collector. The collector is an object that gathers the results from the visitor. It's just a fancy string. For example, the collector PlainString is initialized with an @str attribute set to ''. The SQLString collector then inherits from PlainString. Within the to_sql method (which lives in the Tree Manager), the collector gets the visitor from the connection (engine.connection.visitor). Then the collector's value method is called to produce to the final result, which is the resulting SQL query.
+</p>
+
+
+
+
+<h3> The Point of No Return - Dot </h3>
+
+
+<p>
+There is also a Visitor called Dot, which will create a diagram from the Abstract Syntax Tree in Graphviz dot format. Rather than calling to_sql on the manager, we can also call to_dot, and get a pretty diagram output. So, if we have a table of boats and we want to select all the boats, we can do the following:<br>
+boats = Arel::Table.new(:boats, ActiveRecord::Base)<br>
+select_manager = boats.project(Arel.star)<br>
+select_manager.to_sql #=> "SELECT * FROM \"boats\"" <em>(to_sql returns the expected sql)</em><br>
+File.write("arel.dot", select_manager.to_dot) <em>(to_dot returns the the AST diagram)</em><br>
+Then, we can convert the dot file to a png, and...
+</p>
+
+
+<p><img class="center" src="/images/arel.png" width="350" height="350" title="&lsquo;image&rsquo; &lsquo;images&rsquo;" ></p>
+
+<p>
+  <ul>
+    <li>https://github.com/rails/arel</li>
+    <li>http://infolab.stanford.edu/~ullman/fcdb/aut07/slides/ra.pdf</li>
+    <li>http://web.info.uvt.ro/~oaritoni/inginerie/Cursuri/DesignPatterns/L7/Visitor/nordberg.ps.pdf</li>
+    <li>http://jpospisil.com/2014/06/16/the-definitive-guide-to-arel-the-sql-manager-for-ruby.html</li>
+  </ul>
+</p>
+
+
+<hr />
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Professor Butts RacksUp and Talks Middleware]]></title>
