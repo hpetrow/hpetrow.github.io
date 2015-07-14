@@ -4,7 +4,7 @@
   <title><![CDATA[For the Love of Code]]></title>
   <link href="http://hpetrow.github.io/atom.xml" rel="self"/>
   <link href="http://hpetrow.github.io/"/>
-  <updated>2015-07-14T09:15:48-04:00</updated>
+  <updated>2015-07-14T09:21:18-04:00</updated>
   <id>http://hpetrow.github.io/</id>
   <author>
     <name><![CDATA[Heather Petrow]]></name>
@@ -41,7 +41,7 @@ So, what does this mean, and what does Arel do beneath the surface?
 
 
 <p>
-Relational algebra is a mathematical system, in which the operands are relations (or variables representing relations), and the operators are common procedures on these relations in a database. By definition as an algabraic system, operators and operands are combined to form expressions that produce new values. So, all of the things we want to do with our database, like selecting and getting attributes, are expressed as evaluations of relations and operations. The core relational algebra operations are: set operations (union, intersection, and difference); selection (picking rows); projection (picking columns); products/ joins, and renaming. So, for example, a selection query can be mathematically fornulated as R1:= &sigma;<sub>c</sub>(R2), where c is the condition to be satisfied with reference to attributes of R2.
+Relational algebra is a mathematical system, in which the operands are relations (or variables representing relations), and the operators are common procedures on these relations in a database. By definition as an algabraic system, operators and operands are combined to form expressions that produce new values. So, all of the things we want to do with our database, like selecting and getting attributes, are expressed as evaluations of relations and operations. The core relational algebra operations are: set operations (union, intersection, and difference); selection (picking rows); projection (picking columns); products/ joins, and renaming. So, for example, a selection query can be mathematically formulated as R1:= &sigma;<sub>c</sub>(R2), where c is the condition to be satisfied with reference to attributes of R2.
 </p>
 
 
@@ -74,7 +74,7 @@ In this transformative story, there are three big supporting characters: the man
 
 <p>
 ...because "A point in every direction is the same as no point at all."<br>
-Managers are objects responsible for creating and modifying the tree. For instance, The Select Manager is responsible for composing select statements. So, if we select all from a table, (table.project(Arel.star)), an instance of SelectManager is returned. Similarly, there are managers for insert, update, and delete. If we want to compose a select query, we can instantiate a manager instance (insert_manager = Arel::InsertManager.new(ActiveRecord::Base)), and tell the manager to create the query, (insert_manager.insert([[table[:attribute], "value"]])). When methods are called to modify the query, the manager goes in and updates the appropriate nodes of the tree. We can then call the to_sql method on the manager instance to have the resulting SQL statement returned.
+Managers are objects responsible for creating and modifying the tree. For instance, The Select Manager is responsible for composing select statements. So, if we select all from a table, (table.project(Arel.star)), an instance of SelectManager is returned. Similarly, there are managers for insert, update, and delete. If we want to compose an insert query, we can instantiate an insert manager instance (insert_manager = Arel::InsertManager.new(ActiveRecord::Base)), and tell the manager to create the query, (insert_manager.insert([[table[:attribute], "value"]])). When methods are called to modify the query, the manager goes in and updates the appropriate nodes of the tree. We can then call the to_sql method on the manager instance to have the resulting SQL statement returned.
 </p>
 
 
