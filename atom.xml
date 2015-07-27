@@ -4,7 +4,7 @@
   <title><![CDATA[For the Love of Code]]></title>
   <link href="http://hpetrow.github.io/atom.xml" rel="self"/>
   <link href="http://hpetrow.github.io/"/>
-  <updated>2015-07-14T09:21:18-04:00</updated>
+  <updated>2015-07-27T09:14:02-04:00</updated>
   <id>http://hpetrow.github.io/</id>
   <author>
     <name><![CDATA[Heather Petrow]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Let Me ways.count]]></title>
+    <link href="http://hpetrow.github.io/blog/2015/07/27/let-me-ways-dot-count/"/>
+    <updated>2015-07-27T08:59:37-04:00</updated>
+    <id>http://hpetrow.github.io/blog/2015/07/27/let-me-ways-dot-count</id>
+    <content type="html"><![CDATA[<h2>How do I love thee?</h2>
+
+
+
+
+<p>
+There are so many things I love about code. I love the logic and the thought-process. I love the constant learning and discovery. I get a little thrill out of taking something complex and breaking it down systematically... So many things...
+</p>
+
+
+<blockquote></blockquote>
+
+<p>
+Lately, it has occurred to me that something I've been particularly enraptured by is the idea that code can be used in many different ways for many different reasons. It can be used to build super useful, world-changing applications, but sometimes it can be used to while away a weekend afternoon attempting to code 'Moonlight Sonata'. I think sometimes it feels as though one must exclusively think in different caps, and that spending time programming must be at the expense of other types of pursuits. However, they need not be incompatible. Code can be functional, efficient, and productive, but it can also be imaginative and experimental.
+</p>
+
+
+
+
+<p>
+So, one of my favorite takeaways from the past couple of months is that code can be fun. I mean, code is always fun, (even when grappling with elusive bugs for hours on end, tearing every shred of sanity out one by one, right?). Yet, I've been introduced to the idea that code can also be creative and expressive in a way I hadn't previously considered. It's inspirational to be surrounded by people who code for the sake of coding, sometimes just for the hell of it.
+</p>
+
+
+
+
+<p>
+At one point in the semester we were briefly introduced to a gem called Banjo, https://github.com/dabit/banjo. It was a moment of magical epiphany to realize that music could be expressed as code. Maybe that's a big fat, 'duh'. Of course it can. But, I guess I never considered the possibility that I could do it. Playing around with the gem was a little challenging. I began by taking the sample files and modifying them, like twinkle twinkle gone wild. It's really amazing to write some lines of code and hear the output as sound. Then, I tried converting some of my favorite pieces of music to code, which was incredibly fun, but yielded somewhat less substanital results. Despite trying to start with something easy, I spent... more time than I'd like to admit trying to write 4 bars of music. An attempt at a simple arpeggio yielded something like this.
+</p>
+
+
+<p>
+      play(a(1)).every(3) <br>
+      play(cs(2)).every(3, -1) <br>
+      play(e(2)).every(3, -2)
+</p>
+
+
+<p>
+I'll definitely play with this more. Maybe one day, month, ...year, I'll have something more exciting to share, but for now, the pleasure is in the process.
+</p>
+
+
+
+
+<p>
+On that er.. note, another thing that blew my mind is code poetry. Like, that's a thing!? People write beautiful functioning code that is also poetry. It even has a Wikipedia page, https://en.wikipedia.org/wiki/Code_poetry. After being introduced to the http://timelessrepo.com/haiku site of code haikus, an entire new world of possibility unfolded before me. One project that combined code and literary art was the Stanford code poetry slam, http://news.stanford.edu/news/2013/december/code-poetry-slam-122013.html, where participants used code, poetry, and also multimedia to artistically and programmatically encapsulate ideas. The winner performed her piece by reciting the poem as she typed and projected the code onto the wall. Then, the output from the script was read by various computer generated voices. Another fascinating project was code {poems}, which compiled and published an entire book of code poetry. Submissions were selected by a panel of literary programmers, and were written in a variety of languags like c++, Python, DOS, Ruby, and HTML.
+</p>
+
+
+<p>
+Excerpt from code {poetry}: <br>
+<br>
+<h3>Creation?</h3>
+# Creation def dstBit(mass,rot,vel): bMass=mass bRot=rot bVel=vel def dstCld(mass,rot): mass=mass rot=rot def Stir(dstBit1,dstBit2): CldMass=dstBit1.mass+dstBit2.mass CldRot=dstBit1.vel*dstBit2.vel return dstCld(CldMass,CldRot) def Sprk(dstCld):return StellarObject(dstCld.mass) def Life(planet,seed):return None dstBit1=dstBit(8.3,5.2,-7.1) dstBit2=dstBit(5.3,3.2,5.4) Cld=Stir(dstBit1,dstBit2) Planets=[] for i in range(8): Planets[i]=Stir(Cld,dstBit1) Sol=Sprk(Cld) Life(Planets[2])
+</p>
+
+
+<p>
+http://code-poems.com/news.html<br>
+http://www.wired.com/2013/04/code/
+</p>
+
+
+<p>
+My own attempts at code poetry were pretty silly and my midi code songs less than impressive, but it's an interesting and mind-flexing challenge to undertake. The logical analytical side gets to have a playdate with with the creative, inventive side. Not that everything must be or should be expressed in code, but it sure is nice to know that it can.
+</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Me and My Arel]]></title>

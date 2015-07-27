@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://hpetrow.github.io/blog/2015/07/27/let-me-ways-dot-count/</loc>
+    <lastmod>2015-07-27T08:59:37-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://hpetrow.github.io/blog/2015/07/14/me-and-my-arel/</loc>
     <lastmod>2015-07-14T06:22:49-04:00</lastmod>
   </url>
